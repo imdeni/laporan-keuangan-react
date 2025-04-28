@@ -1,12 +1,17 @@
-import './index.css';
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-blue-500">
-      <h1 className="text-4xl font-bold text-white">Hello Tailwind + React + TypeScript!</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
