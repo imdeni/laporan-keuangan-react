@@ -30,22 +30,24 @@ const ProdukSection: React.FC<ProdukSectionProps> = ({ filteredProducts }) => {
           <div
             key={product.id}
             onClick={() => handleProductClick(product)}
-            className="cursor-pointer bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition"
+            className="cursor-pointer bg-gray-100 p-4 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-in-out"
           >
             <div className="relative w-full h-48 flex items-center justify-center bg-transparent rounded mb-4 overflow-hidden">
-              <div className="absolute top-2 left-2 bg-gray-800 text-white text-sm px-2 py-1 rounded-full z-10">
+              <div className="absolute bottom-2 left-2 bg-gray-800 text-white text-sm min-w-[100px] text-center px-2 py-1 rounded-full z-10">
                 {product.price}
               </div>
-              <div className="absolute top-2 right-2 bg-gray-800 text-white text-sm px-2 py-1 rounded-full z-10">
+              <div className="absolute bottom-2 right-2 bg-gray-800 text-white text-sm min-w-[100px] text-center px-2 py-1 rounded-full z-10">
                 Stok: {product.stok}
               </div>
               <img
                 src={product.imageUrl}
                 alt={product.name}
-                className="max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-105 z-0"
+                className="rounded-lg max-h-full max-w-full object-contain z-0"
               />
             </div>
-            <h3 className="text-xl font-bold text-black mb-2">{product.name}</h3>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-3 tracking-wide">
+              {product.name}
+            </h3>
           </div>
         ))}
       </div>
@@ -65,27 +67,28 @@ const ProdukSection: React.FC<ProdukSectionProps> = ({ filteredProducts }) => {
 
       {selectedProduct && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-300 ease-in-out"
           onClick={closeModal}
         >
           <div
-            className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full relative"
+            className="relative bg-white/90 backdrop-blur-lg p-6 rounded-2xl shadow-2xl transform transition-all duration-300 scale-100 max-w-md w-full animate-fade-in"
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+              className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors duration-200 text-2xl"
               onClick={closeModal}
+              aria-label="Close"
             >
               ✕
             </button>
             <img
               src={selectedProduct.imageUrl}
               alt={selectedProduct.name}
-              className="w-full h-64 object-contain mb-4"
+              className="w-full h-64 object-contain rounded-lg mb-4"
             />
-            <h2 className="text-2xl font-bold mb-2 text-black">{selectedProduct.name}</h2>
-            <p className="text-lg text-gray-700 mb-2">Harga: {selectedProduct.price}</p>
-            <p className="text-md text-gray-600">Stok: {selectedProduct.stok}</p>
+            <h2 className="text-2xl font-semibold text-gray-800 mb-2 text-center">{selectedProduct.name}</h2>
+            <p className="text-lg text-gray-700 text-center mb-1">Harga: <span className="font-medium">{selectedProduct.price}</span></p>
+            <p className="text-sm text-gray-500 text-center">Stok tersisa: <span className="font-semibold">{selectedProduct.stok}</span></p>
           </div>
         </div>
       )}
