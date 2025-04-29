@@ -40,8 +40,23 @@ const Filter: React.FC<FilterProps> = ({
   return (
     <div
       ref={filterRef}
-      className="fixed lg:top-24 mt-2 right-0 lg:right-4 bg-white p-4 rounded-lg shadow-lg w-screen lg:w-96 z-50 md:w-1/2 lg:w-1/3"
+      className="fixed lg:top-24 mt-2 right-0 lg:right-4 bg-white p-4 rounded-lg shadow-lg w-screen lg:w-96 z-50 md:w-1/2 lg:w-1/3 max-h-screen overflow-y-auto"
     >
+      <div className="grid grid-cols-2 gap-2">
+        <button
+          className="mt-2 w-full bg-red-500 text-white py-2 rounded"
+          onClick={resetFilters}
+        >
+          Hapus Filter
+        </button>
+
+        <button
+          className="mt-2 w-full bg-black text-white py-2 rounded"
+          onClick={closeFilter}
+        >
+          Tutup
+        </button>
+      </div>
       <div className="mb-4">
         <h4 className="font-bold mb-2">Kategori</h4>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -70,22 +85,6 @@ const Filter: React.FC<FilterProps> = ({
             </button>
           ))}
         </div>
-      </div>
-
-      <div className="grid grid-cols-2 gap-2">
-        <button
-          className="mt-2 w-full bg-red-500 text-white py-2 rounded"
-          onClick={resetFilters}
-        >
-          Hapus Filter
-        </button>
-
-        <button
-          className="mt-2 w-full bg-black text-white py-2 rounded"
-          onClick={closeFilter}
-        >
-          Tutup
-        </button>
       </div>
     </div>
   );
