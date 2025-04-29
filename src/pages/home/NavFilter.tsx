@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import { AdjustmentsIcon, SearchIcon } from '@heroicons/react/outline';
 
 interface NavFilterProps {
@@ -14,8 +14,19 @@ const NavFilter: React.FC<NavFilterProps> = ({
   isFilterOpen,
   setFilterOpen,
 }) => {
+
+  const [tempQuery, setTempQuery] = useState(searchQuery);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSearchQuery(tempQuery);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [tempQuery, setSearchQuery]);
+
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setSearchQuery(e.target.value);
+    setTempQuery(e.target.value);
   };
 
   return (
@@ -26,7 +37,7 @@ const NavFilter: React.FC<NavFilterProps> = ({
           <SearchIcon className="w-5 h-5 absolute left-3 text-black" />
           <input
             type="text"
-            value={searchQuery}
+            value={tempQuery}
             onChange={handleSearchChange}
             placeholder="Cari produk atau kategori..."
             className="w-full pl-10 p-2 text-black font-bold rounded"
