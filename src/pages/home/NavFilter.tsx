@@ -6,6 +6,7 @@ interface NavFilterProps {
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
   isFilterOpen: boolean;
   setFilterOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  resetFilters: () => void;
 }
 
 const NavFilter: React.FC<NavFilterProps> = ({
@@ -13,6 +14,7 @@ const NavFilter: React.FC<NavFilterProps> = ({
   setSearchQuery,
   isFilterOpen,
   setFilterOpen,
+  resetFilters,
 }) => {
 
   const [tempQuery, setTempQuery] = useState(searchQuery);
@@ -20,6 +22,7 @@ const NavFilter: React.FC<NavFilterProps> = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       setSearchQuery(tempQuery);
+      resetFilters();
     }, 500);
 
     return () => clearTimeout(timer);

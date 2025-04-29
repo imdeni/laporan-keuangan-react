@@ -70,6 +70,7 @@ const Home: React.FC = () => {
         setSearchQuery={setSearchQuery} 
         isFilterOpen={isFilterOpen} 
         setFilterOpen={setFilterOpen} 
+        resetFilters={resetFilters}
       />
 
       <div className="h-28"></div>

@@ -59,7 +59,7 @@ const ProdukSection: React.FC<ProdukSectionProps> = ({ filteredProducts }) => {
             alt="Produk tidak ditemukan"
             className="w-64 h-64 object-contain mb-6"
           />
-          <p className="text-lg font-semibold mb-4">
+          <p className="text-2xl md:text-4xl font-semibold mb-4">
             Produk tidak ditemukan.
           </p>
         </div>
