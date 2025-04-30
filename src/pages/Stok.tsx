@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
 import Sidebar from './admin/dashboard/Sidabar';
 import StockTable from './admin/stok/Table';
 import PaginationControls from './admin/stok/Pagination';
@@ -8,17 +7,12 @@ import { stockData } from "./admin/stok/Data";
 const ITEMS_PER_PAGE = 5;
 
 const Stok: React.FC = () => {
-//   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [currentPage, setCurrentPage] = useState(0);
   const [newItemName, setNewItemName] = useState("");
   const [newItemImage, setNewItemImage] = useState<File>();
   const [data, setData] = useState(stockData);
 
-//   const handleLogout = () => {
-//     localStorage.removeItem("user");
-//     navigate("/login");
-//   };
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
