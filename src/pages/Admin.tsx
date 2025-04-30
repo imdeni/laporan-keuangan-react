@@ -1,32 +1,42 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import DashboardOverview from "./admin/dashboard/Overview";
+import Sidebar from './admin/dashboard/Sidabar';
+import Neraca from './admin/dashboard/Neraca';
+import LabaRugi from './admin/dashboard/LabaRugi';
+import ArusKas from './admin/dashboard/ArusKas';
 
 const Admin: React.FC = () => {
   const navigate = useNavigate();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
-    navigate('/login');
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <header className="bg-gray-800 text-white p-4">
-        <h1 className="text-xl">Admin Dashboard</h1>
-      </header>
+    <div className="flex min-h-screen bg-gray-100">
+      <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} handleLogout={handleLogout} />
       
-      <main className="flex-grow p-6">
-        <h2 className="text-2xl font-semibold">Welcome to the Admin Page</h2>
-      </main>
+      <main
+        className={`flex-grow p-8 transition-all duration-300 ${isSidebarOpen ? "ml-64" : "ml-16"}`}
+      >
+        <h1 className="text-3xl font-bold mb-4">Dashboard Overview</h1>
 
-      <footer className="bg-gray-800 text-white p-4 text-center">
-        <button
-          onClick={handleLogout}
-          className="bg-red-600 py-2 px-4 rounded-md text-white hover:bg-red-700"
-        >
-          Logout
-        </button>
-      </footer>
+        <DashboardOverview />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <Neraca />
+          <LabaRugi />
+          <ArusKas />
+        </div>
+        
+      </main>
     </div>
   );
 };
