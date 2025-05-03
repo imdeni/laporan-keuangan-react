@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from './admin/dashboard/Sidabar';
 import PembelianTable from './admin/pembelian/Table';
-import PaginationControls from './admin/pembelian/Pagination';
+import PaginationControls from './admin/Pagination';
 import { pembelianData } from "./admin/pembelian/Data";
 import { stockData } from "./admin/stok/Data";
 

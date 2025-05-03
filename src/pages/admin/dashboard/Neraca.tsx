@@ -8,9 +8,9 @@ const Neraca: React.FC = () => {
         <div>
           <h3 className="text-lg font-semibold text-gray-800 mb-2">Aset</h3>
           <ul className="space-y-2">
-            <li className="flex justify-between"><span>Kas</span><span>Rp 6.229.000,00</span></li>
+            <li className="flex justify-between"><span>Kas</span><span>Rp 881.000,00</span></li>
             <li className="flex justify-between"><span>Persediaan</span><span>Rp 736.000,00</span></li>
-            <li className="flex justify-between font-medium border-t pt-2"><span>Total Aset</span><span>Rp 6.965.000,00</span></li>
+            <li className="flex justify-between font-medium border-t pt-2"><span>Total Aset</span><span>Rp 1,617.000,00</span></li>
           </ul>
         </div>
 
@@ -20,7 +20,7 @@ const Neraca: React.FC = () => {
             <li className="flex justify-between"><span>Utang Usaha</span><span>Rp 0,00</span></li>
             <li className="flex justify-between"><span>Utang Lainnya</span><span>Rp 0,00</span></li>
             <li className="flex justify-between font-medium border-t pt-2"><span>Total Liabilitas</span><span>Rp 0,00</span></li>
-            <li className="flex justify-between font-bold text-green-600 border-t pt-2"><span>Ekuitas</span><span>Rp 6.965.000,00</span></li>
+            <li className="flex justify-between font-bold text-green-600 border-t pt-2"><span>Ekuitas</span><span>Rp 1,617.000,0</span></li>
           </ul>
         </div>
       </div>

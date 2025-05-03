@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Sidebar from './admin/dashboard/Sidabar';
 import { penjualanData } from './admin/penjualan/Data';
 import { pembelianData } from './admin/pembelian/Data';
-import PaginationControls from "./admin/laporan/Pagination";
+import PaginationControls from "./admin/Pagination";
 import LaporanTable, { LaporanItem } from "./admin/laporan/Table";
 
 const itemsPerPage = 10;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from './admin/dashboard/Sidabar';
 import StockTable from './admin/stok/Table';
-import PaginationControls from './admin/stok/Pagination';
+import PaginationControls from './admin/Pagination';
 import { stockData } from "./admin/stok/Data";
 
 const ITEMS_PER_PAGE = 5;
