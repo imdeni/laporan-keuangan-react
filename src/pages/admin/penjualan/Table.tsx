@@ -15,7 +15,32 @@ interface Props {
 
 const Table: React.FC<Props> = ({ data }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [returnQty, setReturnQty] = useState<{ [index: number]: number }>({});
   const [selectedItem, setSelectedItem] = useState<PenjualanItem | null>(null);
+
+  const handleReturn = (item: PenjualanItem, index: number) => {
+    const qty = returnQty[index] || 0;
+    if (qty <= 0) {
+      alert("Jumlah retur harus lebih dari 0.");
+      return;
+    }
+    if (qty > item.qty) {
+      alert("Jumlah retur tidak boleh lebih besar dari qty penjualan.");
+      return;
+    }
+
+    console.log("Returning", {
+      tanggal: new Date().toISOString().split("T")[0],
+      namaProduk: item.namaProduk,
+      qty: qty,
+      hargaJual: item.hargaJual,
+      total: qty * item.hargaJual,
+      status: "retur_sell"
+    });
+
+    alert(`Retur untuk ${item.namaProduk} sebanyak ${qty} berhasil disiapkan.`);
+    setReturnQty((prev) => ({ ...prev, [index]: 0 }));
+  };
 
   const filteredData = data.filter((item) =>
     item.namaProduk.toLowerCase().includes(searchTerm.toLowerCase())
@@ -42,7 +67,7 @@ const Table: React.FC<Props> = ({ data }) => {
               <th className="px-6 py-3 text-center text-xs font-semibold text-white uppercase">Qty</th>
               <th className="px-6 py-3 text-center text-xs font-semibold text-white uppercase">Harga Jual</th>
               <th className="px-6 py-3 text-right text-xs font-semibold text-white uppercase">Total</th>
-              {/* <th className="px-6 py-3 text-right text-xs font-semibold text-white uppercase">HPP</th> */}
+              <th className="px-6 py-3 text-center text-xs font-semibold text-white uppercase">Retur</th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
@@ -64,7 +89,27 @@ const Table: React.FC<Props> = ({ data }) => {
                   <td className="px-6 py-4 text-sm text-center text-gray-700">{item.qty}</td>
                   <td className="px-6 py-4 text-sm text-center text-gray-700">Rp {item.hargaJual.toLocaleString()}</td>
                   <td className="px-6 py-4 text-sm text-right text-gray-700">Rp {item.total.toLocaleString()}</td>
-                  {/* <td className="px-6 py-4 text-sm text-right text-gray-700">Rp {item.hpp.toLocaleString()}</td> */}
+                  <td className="px-6 py-4 text-sm text-center">
+                    <input
+                      type="number"
+                      min={1}
+                      max={item.qty}
+                      value={returnQty[index] || ""}
+                      onChange={(e) =>
+                        setReturnQty((prev) => ({
+                          ...prev,
+                          [index]: parseInt(e.target.value, 10) || 0,
+                        }))
+                      }
+                      className="w-16 text-sm border rounded px-2 py-1"
+                    />
+                    <button
+                      onClick={() => handleReturn(item, index)}
+                      className="ml-2 px-2 py-1 text-xs bg-red-500 hover:bg-red-600 text-white rounded"
+                    >
+                      Retur
+                    </button>
+                  </td>
                 </tr>
               ))
             )}
