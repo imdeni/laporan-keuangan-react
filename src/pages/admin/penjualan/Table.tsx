@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SearchBar from "../Search";
 
 interface PenjualanItem {
   tanggal: string;
@@ -48,7 +49,7 @@ const Table: React.FC<Props> = ({ data }) => {
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-end p-4">
+      {/* <div className="flex justify-end p-4">
         <input
           type="text"
           placeholder="Cari Nama Produk..."
@@ -56,7 +57,8 @@ const Table: React.FC<Props> = ({ data }) => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-      </div>
+      </div> */}
+      <SearchBar searchTerm={searchTerm} onChange={setSearchTerm} />
 
       <div className="overflow-x-auto mx-auto max-w-xs sm:max-w-full">
         <table className="table-auto min-w-full divide-y divide-gray-200">

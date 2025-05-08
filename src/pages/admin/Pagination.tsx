@@ -10,8 +10,8 @@ const Pagination: React.FC<Props> = ({ pageCount, onPageChange }) => {
     return (
       <div className="p-4 border-t bg-gray-50 flex justify-center text-gray-800">
         <ReactPaginate
-          previousLabel={"← Sebelumnya"}
-          nextLabel={"Berikutnya →"}
+          previousLabel={"← "}
+          nextLabel={" →"}
           pageCount={pageCount}
           onPageChange={onPageChange}
           containerClassName={"flex items-center space-x-2"}

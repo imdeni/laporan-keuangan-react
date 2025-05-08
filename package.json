@@ -12,6 +12,7 @@
     "format": "prettier --write src/**/*.{js,ts,jsx,tsx,css,md}"
   },
   "dependencies": {
+    "@blackbox-vision/react-qr-reader": "^5.0.0",
     "@heroicons/react": "^1.0.6",
     "axios": "^1.9.0",
     "framer-motion": "^12.9.2",
@@ -22,6 +23,7 @@
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "react-paginate": "^8.3.0",
+    "react-qr-reader": "^3.0.0-beta-1",
     "react-router-dom": "^7.5.3",
     "react-scroll": "^1.9.3",
     "react-table": "^7.8.0",
